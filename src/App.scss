@@ -1,0 +1,15 @@
+.app {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  display: flex;
+  background-color: #f3f2ef;
+  flex-direction: column;
+  align-items: center;
+
+  &__body {
+    display: flex;
+  }
+}
+
