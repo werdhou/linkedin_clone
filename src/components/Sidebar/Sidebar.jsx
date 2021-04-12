@@ -8,7 +8,6 @@ import background from '../../assets/img/background.jpg'
 import RecentItem from './RecentItem'
 
 const Sidebar = ({ name, email }) => {
-
     
 
     return (

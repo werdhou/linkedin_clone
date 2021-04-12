@@ -5,14 +5,24 @@ import HeaderOption from './HeaderOption';
 import './Header.scss'
 
 import LinkedinIcon from '../../assets/img/linkedin.svg';
-import Avatar from '../../assets/img/avatart.jpg'
+// import Avatar from '../../assets/img/avatart.jpg'
 import SearchIcon from '@material-ui/icons/Search';
 import { Home, Message, NotificationImportant, SupervisorAccount, Work } from '@material-ui/icons';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../features/usersReducer';
+import { auth } from '../../firebase/firebase';
 
 
 function Header() {
     const titles = ['Home', 'My Network', 'Jobs', 'Messaging', 'Notification']
     const icons = [Home, SupervisorAccount, Work, Message, NotificationImportant]
+    
+    const dispatch = useDispatch()
+
+    const logoutOfApp = () => {
+        dispatch(logout())
+        auth.signOut()
+    }
 
     return (
         <div className="header">
@@ -23,7 +33,7 @@ function Header() {
                 <div className="header__search">
                     {/* searchicon */}
                     <SearchIcon />
-                    <input type="text" />
+                    <input type="text" placeholder="Search"/>
                 </div>
             </div>
 
@@ -33,7 +43,7 @@ function Header() {
                         <HeaderOption key={title+idx} title={title} Icon={icons[idx]} />
                     ))
                 }
-                <HeaderOption avatar={Avatar} title="me"/>
+                <HeaderOption onClick={logoutOfApp} avatar={true} title="me"/>
 
             </div>
         </div>
